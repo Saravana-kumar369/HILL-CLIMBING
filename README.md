@@ -59,3 +59,67 @@ Score: 1  Solution :  Artificial Intelligencf<br>
 Score: 1  Solution :  Artificial Intelligencf<br>
 Score: 1  Solution :  Artificial Intelligencf<br>
 Score: 0  Solution :  Artificial Intelligence<br>
+
+<h2>PROGRAM:</h2>
+<HR>
+
+```
+import random
+import string
+
+# Generate a random solution by creating a list of random characters
+# with the same length as the given answer
+def generate_random_solution(answer):
+    l = len(answer)  # Find the length of the answer
+    return [random.choice(string.printable) for _ in range(l)]
+
+# Evaluate how close the solution is to the answer by calculating the difference
+def evaluate(solution, answer):
+    target = list(answer)
+    diff = 0
+    for i in range(len(target)):
+        s = solution[i]
+        t = target[i]
+        # Calculate the difference in ASCII values and sum up the absolute difference
+        diff += abs(ord(s) - ord(t))
+    return diff
+
+# Mutate the solution by randomly changing one character
+def mutate_solution(solution):
+    ind = random.randint(0, len(solution) - 1)
+    solution[ind] = random.choice(string.printable)
+    return solution
+
+# Hill Climbing algorithm to find the closest solution to the given answer
+def SimpleHillClimbing():
+    answer = "Artificial Intelligence"
+    best = generate_random_solution(answer)
+    best_score = evaluate(best, answer)
+    
+    while True:
+        print("Score:", best_score, " Solution:", "".join(best))  
+        
+        if best_score == 0:  # If the score is zero, we found the exact match
+            break
+        
+        # Create a new solution by mutating the current best solution
+        new_solution = mutate_solution(list(best))
+        score = evaluate(new_solution, answer)   
+        
+        if score < best_score:  # If the new solution is better, update the best solution
+            best = new_solution
+            best_score = score
+
+# Run the Simple Hill Climbing algorithm
+SimpleHillClimbing()
+```
+
+<H2>OUTPUT:</H2>
+<HR>
+
+![image](https://github.com/user-attachments/assets/5401a3a5-c1d9-4b1d-b20c-74ec0ed7f391)
+
+![image](https://github.com/user-attachments/assets/c0c88332-00cb-41a7-ad38-2fd405c3233b)
+
+
+
