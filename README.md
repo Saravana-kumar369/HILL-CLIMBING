@@ -121,5 +121,7 @@ SimpleHillClimbing()
 
 ![image](https://github.com/user-attachments/assets/c0c88332-00cb-41a7-ad38-2fd405c3233b)
 
+<H2>RESULT:</H2>
 
+Thus, the program for Simple Hill Climbing Algorithm executed successfully.
 
